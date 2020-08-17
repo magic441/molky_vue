@@ -1,44 +1,37 @@
 <template>
   <div id="app">
     <div id="main">
-      <Number :number="score_1p"/>
-      <Number :number="score_2p"/>
-      <button v-on:click="openModal">open</button>
-    </div>
-    <div id="overlay" v-show="showContent" v-on:click.self="closeModal">
-      <div id="content">
-        <p>これがモーダルウィンドウです。</p>
-        <p><button v-on:click="increase">++</button></p>
-      </div>
+      <DispNumber :number="score_1p" @changeCalcModal="changeCalcModal($event)"/>
+      <DispNumber :number="score_2p" @changeCalcModal="changeCalcModal($event)"/>
+      <CalcModal :showContent="showContent" @changeCalcModal="changeCalcModal($event)"/>
     </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Number from './components/Number.vue'
+import DispNumber from './components/DispNumber.vue'
+import CalcModal from './components/CalcModal.vue'
 
 import 'normalize.css'
 
 export default {
   name: 'App',
   components: {
-    Number,
-    HelloWorld
+    DispNumber,
+    HelloWorld,
+    CalcModal
   },
   data(){
     return {
-      score_1p: 1,
-      score_2p: 5,
+      score_1p: 25,
+      score_2p: 30,
       showContent: false
     }
   },
   methods:{
-    openModal: function(){
-      this.showContent = true
-    },
-    closeModal: function(){
-      this.showContent = false
+    changeCalcModal: function(state){
+      this.showContent = state
     },
     increase: function(){
       this.score_1p += 1
@@ -61,36 +54,13 @@ export default {
 }
 
 #main {
-  height: 94vh;
+  height: 96%;
   background: white;
-  margin: 3vmin;
+  top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
   position: relative;
   border-radius: 4%;
 }
 
-#overlay{
-  /*　要素を重ねた時の順番　*/
-  z-index:1;
-
-  /*　画面全体を覆う設定　*/
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color:rgba(0,0,0,0.5);
-
-  /*　画面の中央に要素を表示させる設定　*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-#content{
-  z-index:2;
-  width:50%;
-  padding: 1em;
-  background:#fff;
-}
 </style>
