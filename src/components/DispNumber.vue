@@ -15,7 +15,6 @@ export default {
       this.$emit('changeCalcModal', true);
     }
   }
-
 }
 </script>
 
@@ -24,17 +23,14 @@ export default {
 .number{
   position: relative;
   height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 span{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 20vh;
-  height: 20vh;
   font-size:20vh;
-  /* transform:rotate(90deg); */
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  transform:rotate(180deg);
 }
 </style>

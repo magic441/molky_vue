@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="main">
-      <DispNumber :number="score_1p" @changeCalcModal="changeCalcModal($event)"/>
-      <DispNumber :number="score_2p" @changeCalcModal="changeCalcModal($event)"/>
-      <CalcModal :showContent="showContent" @changeCalcModal="changeCalcModal($event)"/>
+      <DispNumber :number="score_1p" @changeCalcModal="changeCalcModal($event, true)"/>
+      <DispNumber :number="score_2p" @changeCalcModal="changeCalcModal($event, false)"/>
+      <CalcModal :showContent="showContent" :score="score_tmp" @changeCalcModal="changeCalcModal($event, is1p)" @changeScore="changeScore($event)"/>
     </div>
   </div>
 </template>
@@ -24,17 +24,32 @@ export default {
   },
   data(){
     return {
-      score_1p: 25,
-      score_2p: 30,
-      showContent: false
+      score_1p: 0,
+      score_2p: 0,
+      score_tmp: 0,
+      showContent: false,
+      is1p: true
     }
   },
   methods:{
-    changeCalcModal: function(state){
+    changeCalcModal: function(state, bool){
       this.showContent = state
+      this.is1p = bool
+      if(this.is1p){
+        this.score_tmp = this.score_1p
+      }
+      else{
+        this.score_tmp = this.score_2p
+      }
     },
-    increase: function(){
-      this.score_1p += 1
+    changeScore: function(score){
+      if(this.is1p){
+        this.score_1p = score
+      }
+      else{
+        this.score_2p = score
+      }
+      this.showContent = false
     }
   }
 }
