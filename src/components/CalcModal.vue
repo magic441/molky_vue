@@ -194,6 +194,10 @@ export default {
 #content{
   height: 60vh;
   width: 60vh;
+  /*
+  max-width:100vw;
+  max-height: 60vh;
+  */
   background: white;
   border-radius: 4%;
   opacity: 0.95;

@@ -3,13 +3,13 @@
     <div id="main">
       <DispNumber :number="score_1p" @changeCalcModal="changeCalcModal($event, true)"/>
       <DispNumber :number="score_2p" @changeCalcModal="changeCalcModal($event, false)"/>
+      <img id="popup" src="/img/svgs/popup.svg">
       <CalcModal :showContent="showContent" :score="score_tmp" @changeCalcModal="changeCalcModal($event, is1p)" @changeScore="changeScore($event)"/>
     </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import DispNumber from './components/DispNumber.vue'
 import CalcModal from './components/CalcModal.vue'
 
@@ -19,7 +19,6 @@ export default {
   name: 'App',
   components: {
     DispNumber,
-    HelloWorld,
     CalcModal
   },
   data(){
@@ -78,4 +77,11 @@ export default {
   border-radius: 4%;
 }
 
+#popup{
+  width: 5vw;
+  position: absolute;
+  top: 10vh;
+  right: 3vw;
+  transform:rotate(-90deg);
+}
 </style>
