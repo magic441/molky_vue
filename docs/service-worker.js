@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.a9ca5491319039879591dd2f20671a31.js"
+  "precache-manifest.d37edda69512a963c5339824bfb0a4f3.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "molky_vue"});
+workbox.core.setCacheNameDetails({prefix: "molky_score"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
