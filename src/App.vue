@@ -3,8 +3,6 @@
     <div id="main">
       <DispNumber :number="score_1p" @changeCalcModal="changeCalcModal($event, true)"/>
       <DispNumber :number="score_2p" @changeCalcModal="changeCalcModal($event, false)"/>
-      <img id="popup" src="/img/svgs/popup.svg">
-      <img id="molky_img" src="/img/pngs/molky.png">
       <CalcModal :showContent="showContent" :score="score_tmp" @changeCalcModal="changeCalcModal($event, is1p)" @changeScore="changeScore($event)"/>
     </div>
   </div>
@@ -76,20 +74,5 @@ export default {
   margin-right: 2%;
   position: relative;
   border-radius: 4%;
-}
-
-#popup{
-  width: 5vw;
-  position: absolute;
-  top: 10%;
-  right: 3vw;
-  transform:rotate(-90deg);
-}
-
-#molky_img{
-  height: 70%;
-  position: absolute;
-  top: 15%;
-  right: 0;
 }
 </style>
